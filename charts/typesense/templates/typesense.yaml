@@ -92,6 +92,7 @@ spec:
             {{ end }}
             - "--enable-search-analytics=true"
             - "--analytics-dir=/usr/share/typesense/analytics-data"
+            - "--analytics-flush-interval=60"
           env:
           - name: TYPESENSE_API_KEY
             valueFrom:
