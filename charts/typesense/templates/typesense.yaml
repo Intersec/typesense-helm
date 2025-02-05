@@ -91,7 +91,7 @@ spec:
             - "--reset-peers-on-error"
             {{ end }}
             - "--enable-search-analytics=true"
-            - "--analytics-dir=/usr/share/typesense/analytics-data"
+            - "--analytics-dir=/usr/share/typesense/data/analytics"
             - "--analytics-flush-interval=60"
           env:
           - name: TYPESENSE_API_KEY
@@ -121,8 +121,6 @@ spec:
             name: nodeslist
           - mountPath: /usr/share/typesense/data
             name: data
-          - mountPath: /usr/share/typesense/analytics-data
-            name: analytics-data
       serviceAccountName: {{ include "typesense.fullname" . }}-service-account
       securityContext:
         fsGroup: 2000
@@ -136,15 +134,6 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: data
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: {{ required "typesense.storage.size is required" .Values.typesense.storage.size }}
-      storageClassName: {{ required "typesense.storage.storageClassName is required" .Values.typesense.storage.storageClassName }}
-  - metadata:
-      name: analytics-data
     spec:
       accessModes:
       - ReadWriteOnce
