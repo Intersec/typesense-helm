@@ -5,8 +5,7 @@ typesense:
   protocol: http
   cors:
     enabled: true
-    # 1234 is the port of the local dev server for frontend
-    domains: "http://localhost:9089,https://beta.search.corp,http://localhost:1234"
+    domains: "http://localhost:9089"
   resetPeersOnError: true
   storage:
     size: 5Gi
