@@ -8,7 +8,7 @@ typesense:
     domains: "http://localhost:9089"
   resetPeersOnError: true
   storage:
-    size: 10Gi
+    size: 5Gi
     storageClassName: default
   replicas: 3
 scraper:
